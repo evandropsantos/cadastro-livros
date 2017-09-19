@@ -1,5 +1,5 @@
 var app = require('./config/express')();
-//var rotasProdutos = require('./app/routes/produtos')(app);
+// Carregamento automático dos módulos
 
 app.listen(3000, function() {
 
