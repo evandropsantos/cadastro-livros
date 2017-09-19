@@ -1,23 +1,5 @@
-var configura = require('./config/express');
-var app = configura();
-
-app.get('/produtos', function(req, res) {
-
-    var mysql = require('mysql');
-    
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'biblioteca'
-    });
-
-    connection.query('select * from livros', function(err, results){
-        res.send(results);
-    });
-
-    connection.end();
-});
+var app = require('./config/express')();
+var rotasProdutos = require('./app/routes/produtos')(app);
 
 app.listen(3000, function() {
 
