@@ -1,13 +1,22 @@
-var express = require('express');
-var app = express();
-
-app.set('view engine', 'ejs');
+var configura = require('./config/express');
+var app = configura();
 
 app.get('/produtos', function(req, res) {
 
-    console.log('Atendendo a requisição');
+    var mysql = require('mysql');
     
-    res.render('produtos/lista');
+    var connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'biblioteca'
+    });
+
+    connection.query('select * from livros', function(err, results){
+        res.send(results);
+    });
+
+    connection.end();
 });
 
 app.listen(3000, function() {

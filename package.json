@@ -18,7 +18,8 @@
   "homepage": "https://github.com/evandropsantos/cadastro-livros#readme",
   "dependencies": {
     "ejs": "^2.5.7",
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "mysql": "^2.14.1"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
