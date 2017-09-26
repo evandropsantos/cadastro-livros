@@ -2,7 +2,7 @@
   "name": "cadastro-livros",
   "version": "1.0.0",
   "description": "",
-  "main": "produtosWeb.js",
+  "main": "app.js",
   "scripts": {
     "nodemon": "nodemon"
   },
@@ -18,8 +18,10 @@
   "homepage": "https://github.com/evandropsantos/cadastro-livros#readme",
   "dependencies": {
     "body-parser": "^1.18.1",
+    "consign": "^0.1.6",
     "ejs": "^2.5.7",
-    "express": "^4.15.4",
+    "express": "^4.15.5",
+    "express-validator": "^4.2.1",
     "mysql": "^2.14.1"
   },
   "devDependencies": {
