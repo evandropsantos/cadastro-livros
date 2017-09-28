@@ -1,26 +1,27 @@
-var http = require('http');
-var assert = require('assert');
+var express = require('../config/express')();
+var request = require('supertest')(express);
 
 describe('ProdutosController', function() {
 
     it('#Listagem JSON', function(done) {
-        
-        var configuracoes = {
-            hostname: 'localhost',
-            port: 3000,
-            path: '/produtos',
-            headers: {
-                'Accept': 'application/json'
-            }
-        };
 
-        http.get(configuracoes, function(res) {
+        request.get('/produtos')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200, done);
+    });
 
-            assert.equal(res.statusCode, 200);
+    it('#Cadastro de novo livro (Dados Invalidos)', function(done) {
 
-            assert.equal(res.headers['content-type'], 'application/json');
+        request.post('/produtos')
+            .send( {titulo: "", descricao: "Novo Livro"} )
+            .expect(400, done);
+    });
 
-            done();
-        });
+    it('#Cadastro de novo livro (Dados Validos)', function(done) {
+
+        request.post('/produtos')
+            .send( {titulo: "Titulo", descricao: "Novo Livro", preco: 20.50} )
+            .expect(302, done);
     });
 });
