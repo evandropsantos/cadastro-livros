@@ -25,3 +25,5 @@ describe('ProdutosController', function() {
             .expect(302, done);
     });
 });
+
+// Executar testes NODE_ENV=test node_modules/mocha/bin/mocha
